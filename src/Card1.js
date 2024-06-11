@@ -8,9 +8,9 @@ import Typography from '@mui/material/Typography';
 
 export default function Card1({ image, title, description }) {
   return (
-    <Card sx={{ maxWidth: 345, marginTop: 10 }}>
+    <Card sx={{ maxWidth: 345, marginTop: 10, height:320, marginLeft:5}}>
       <CardMedia
-        sx={{ height: 40, p: 10 }}
+        sx={{ height: 10, p: 10 }}
         
         image={image}
         title={title}

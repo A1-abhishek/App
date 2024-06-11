@@ -22,7 +22,7 @@ import AccountCircleTwoToneIcon from '@mui/icons-material/AccountCircleTwoTone';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import Card1 from './Card1';
 import { InputBase } from '@mui/material';
-import { Search as SearchIcon2 } from '@mui/icons-material';
+import { Height, Search as SearchIcon2 } from '@mui/icons-material';
 
 
 const drawerWidth = 240;
@@ -36,7 +36,7 @@ const cardData = [
   {
     title: 'Apple',
     image: 'https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-1.2.1&q=80&w=1080',
-    description: 'Apples are nutritious and good for health.'
+    description: 'Apples are nutritious and good for health and mind.'
   },
   {
     title: 'Banana',
@@ -46,7 +46,7 @@ const cardData = [
   {
     title: 'Apple',
     image: 'https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-1.2.1&q=80&w=1080',
-    description: 'Apples are nutritious and good for health.'
+    description: 'Apples are nutritious and good for health and mind.'
   },
   {
     title: 'Banana',
@@ -56,7 +56,7 @@ const cardData = [
   {
     title: 'Apple',
     image: 'https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-1.2.1&q=80&w=1080',
-    description: 'Apples are nutritious and good for health.'
+    description: 'Apples are nutritious and good for health and mind.'
   },
   {
     title: 'Banana',
@@ -255,10 +255,10 @@ export default function MiniDrawer() {
         </List>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3, display: 'flex', flexWrap: 'wrap' }}>
-        <Grid container spacing={3}>
+        <Grid container spacing={2}>
           {filteredCards.map((card, index) => (
             <Grid item xs={12} sm={6} md={4} key={index}>
-              <Card1 title={card.title} image={card.image} description={card.description} />
+              <Card1 title={card.title} image={card.image} description={card.description} sx={{Height:80}}/>
             </Grid>
           ))}
         </Grid>
