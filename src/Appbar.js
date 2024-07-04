@@ -30,7 +30,7 @@ const drawerWidth = 240;
 const cardData = [
   {
     title: 'Tomato',
-    image: 'https://plus.unsplash.com/premium_photo-1708971732799-649f5526ad73?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    image: 'https://images.pexels.com/photos/533280/pexels-photo-533280.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     description: 'Tomatoes are a rich source of vitamins and minerals.'
   },
   {
@@ -65,7 +65,7 @@ const cardData = [
   },
   {
     title: 'Tomato',
-    image: 'https://plus.unsplash.com/premium_photo-1708971732799-649f5526ad73?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+   image: 'https://images.pexels.com/photos/533280/pexels-photo-533280.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     description: 'Tomatoes are a rich source of vitamins and minerals.'
   },
 ];
@@ -108,22 +108,22 @@ const AppBar = styled(MuiAppBar, {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),
-  ...(open && {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  }),
+  // ...(open && {
+  //   marginLeft: drawerWidth,
+  //   width: `calc(100% - ${drawerWidth}px)`,
+  //   transition: theme.transitions.create(['width', 'margin'], {
+  //     easing: theme.transitions.easing.sharp,
+  //     duration: theme.transitions.duration.enteringScreen,
+  //   }),
+  // }),
 }));
 
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
     width: drawerWidth,
-    flexShrink: 0,
+    // flexShrink: 0,
     whiteSpace: 'nowrap',
-    boxSizing: 'border-box',
+    // boxSizing: 'border-box',
     ...(open && {
       ...openedMixin(theme),
       '& .MuiDrawer-paper': {
@@ -149,12 +149,16 @@ export default function MiniDrawer() {
   const [query, setQuery] = React.useState('');
 
   const handleDrawerOpen = () => {
-    setOpen(true);
+   console.log(open)
+  
+   setOpen(!open)
+
   };
 
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
+
+  // const handleDrawerClose = () => {
+  //   setOpen(false);
+  // };
 
   const handleInputChange = (e) => {
     setQuery(e.target.value.toLowerCase());
@@ -163,46 +167,24 @@ export default function MiniDrawer() {
   const filteredCards = cardData.filter(card =>
     card.title.toLowerCase().includes(query)
   );
+  console.log(filteredCards)
 
   return (
     <Box sx={{ display: 'flex' }}>
-      <CssBaseline /> 
-      <AppBar position="fixed" open={open}>
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            sx={{
-              marginRight: 5,
-              ...(open && { display: 'none' }),
-            }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            My Application
-          </Typography>
-          <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: 'flex', alignItems: 'center', mr: 50, p:0.1 }}>
-          
-         <IconButton color="inherit" aria-label="search">
-            <SearchIcon2 sx={{  }}/>
- 	        </IconButton>
- 	       <InputBase   
-         onChange={handleInputChange}  placeholder="Search..." sx={{ borderRadius:4, padding:0.5, color: 'inherit', border:'1px solid #88b2dd', width:500 }} />
-           
-          </Box>
-        </Toolbar>
-      </AppBar>
-      <Drawer variant="permanent" open={open}>
-        <DrawerHeader>
+      {/* <CssBaseline />  */}
+      <Drawer variant="permanent" open={open} sx={{display:"absolute"}}>
+        {/* <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
-        </DrawerHeader>
-        <Divider />
+        </DrawerHeader> */}
+        <List>
+          <ListItem></ListItem>
+          <ListItem></ListItem>
+          <ListItem></ListItem>
+          <ListItem></ListItem>
+        </List>
+        {/* <Divider /> */}
         <List>
           {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: 'block' }}>
@@ -255,15 +237,49 @@ export default function MiniDrawer() {
         </List>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3, display: 'flex', flexWrap: 'wrap' }}>
-        <Grid container spacing={2}>
+           
+        <AppBar position="fixed" open={open} sx={{display:"absolute"}}>
+        <Toolbar>
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            onClick={handleDrawerOpen}
+            // edge="start"
+            // sx={{
+            //   marginRight: 5,
+            //   // ...(open && { display: 'none' }),
+            // }}
+          >
+            <MenuIcon />
+          </IconButton>
+
+          <Typography variant="h6" noWrap component="div">
+            My Application
+          </Typography>
+          <Box sx={{ flexGrow: 1 }} />
+          <Box sx={{ display: 'flex', alignItems: 'center', mr: 50, p:0.1 }}>
+          
+         <IconButton color="inherit" aria-label="search">
+            <SearchIcon2/>
+ 	        </IconButton>
+ 	       <InputBase   
+         onChange={handleInputChange}  placeholder="Search..." sx={{ borderRadius:4, padding:0.5, color: 'inherit', border:'1px solid #88b2dd', width:500 }} />
+           
+          </Box>
+        </Toolbar>
+      </AppBar>
+     
+
+      <Grid container spacing={2}>
           {filteredCards.map((card, index) => (
             <Grid item xs={12} sm={6} md={4} key={index}>
-              <Card1 title={card.title} image={card.image} description={card.description} sx={{Height:80}}/>
+              <Card1 sx={{ Height:80}} title={card.title} image={card.image} description={card.description} />
             </Grid>
           ))}
         </Grid>
       
       </Box>
+
     </Box>
   );
 }
