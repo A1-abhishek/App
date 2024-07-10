@@ -1,6 +1,5 @@
 /* App.css or style.css */
 
-
 body {
   background-image: url('./background.jpg'); /* Ensure the correct path to your image */
   color: white; 
@@ -13,6 +12,7 @@ body {
   border: 1px solid #ccc;
   border-radius: 5px;
   backdrop-filter: blur(8px);
+  height: 380px;
   
 }
 
@@ -41,12 +41,12 @@ h2 {
 }
 
 
-input[type="email"],
-input[type="password"] {
+input[type="email"]
+{
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 3px;
+  border-radius: 5px;
   box-sizing: border-box;
 }
 
@@ -62,6 +62,7 @@ button[type="submit"] {
   border-radius: 3px;
   cursor: pointer;
   width: 100%;
+  margin-top: 20px;
 }
 
 a {

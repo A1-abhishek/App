@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import './login.css';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleEmailChange = (event) => {
@@ -13,6 +16,10 @@ function Login() {
 
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
+  };
+
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
   };
 
   const handleSubmit = (event) => {
@@ -39,17 +46,34 @@ function Login() {
             // required
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            placeholder='Enter password'  
-            value={password}
-            onChange={handlePasswordChange}
-            // required
-          />
-        </div>
+     
+        <div style={{ position: 'relative', width: 'fit-content' }}>
+        <label htmlFor="password">Password:</label>
+      <input
+        type={showPassword ? 'text' : 'password'}
+        value={password}
+        onChange={handlePasswordChange}
+        placeholder="Enter your password"
+        style={{
+          padding: '10px',
+          width: '330px',
+          border: '1px solid #ccc', // Add explicit border style
+          borderRadius: '5px',     // Add explicit border radius
+        }}
+      />
+      <FontAwesomeIcon
+        icon={showPassword ? faEyeSlash : faEye}
+        onClick={toggleShowPassword}
+        style={{
+          position: 'absolute',
+          right: '10px',
+          top: '68%',
+          transform: 'translateY(-50%)',
+          color:'#000000',
+          cursor: 'pointer',
+        }}
+      />
+    </div>
 
         <div className='flex'>
           <div className='check'>
